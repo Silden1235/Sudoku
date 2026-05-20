@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSolution = [];
 
     // 1. Fetch the puzzles from your external file
-    fetch('puzzles.json')
+    fetch('./puzzles.json')
         .then(response => {
             if (!response.ok) throw new Error('Failed to load puzzles.json');
             return response.json();
