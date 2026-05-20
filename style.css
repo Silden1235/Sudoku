@@ -1,0 +1,132 @@
+body {
+    display: flex;
+    flex-direction: column; /* Stacks the header on top of the grid */
+    justify-content: center; /* Centers everything vertically */
+    align-items: center; /* Centers everything horizontally */
+    min-height: 100vh; /* Keeps layout responsive if content grows */
+    background-color: #f0f2f5;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+header {
+    text-align: center; /* Centers the text inside the header element */
+    margin-bottom: 20px; /* Adds clean spacing above the Sudoku board */
+}
+
+
+.sudoku-container {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(9, 50px);
+    border: 3px solid #000;
+    background-color: #000;
+    gap: 1px; /* Creates thin lines between cells */
+}
+
+.cell {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+/* Style for the locked starting numbers provided by the API */
+.cell.given {
+    background-color: #f4f4f6; /* Distinguishable off-white background */
+    color: #2c3e50;            /* Distinct gray-blue ink color */
+    font-weight: 800;          /* Bold typography to separate from user inputs */
+    cursor: not-allowed;       /* Changes user cursor on hover */
+}
+
+/* Thick borders for 3x3 subgrid separation */
+.thick-right {
+    border-right: 3px solid #000;
+}
+
+.thick-bottom {
+    border-bottom: 3px solid #000;
+}
+
+/* Optional: Highlight cell on hover or focus */
+.cell:focus {
+    background-color: #e0f7fa;
+}
+
+/* Highlight color for all cells in the same row or column */
+.cell.highlighted {
+    background-color: #f0f7ff; /* Very soft blue tint */
+}
+
+/* Distinct color for the specific cell the user is interacting with */
+.cell:focus, .cell.hovered-cell {
+    background-color: #d0e8ff; /* Medium blue tint */
+}
+
+/* Keep given newspaper clues distinct even when highlighted */
+.cell.given.highlighted {
+    background-color: #e4e9f0; /* Darker tinted gray */
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#check-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#check-btn:hover {
+    background-color: #34495e;
+}
+
+/* Validation styles for user answers */
+.cell.correct {
+    background-color: #d4edda !important; /* Soft green */
+    color: #155724;
+}
+
+.cell.incorrect {
+    background-color: #f8d7da !important; /* Soft red */
+    color: #721c24;
+    animation: shake 0.2s ease-in-out 2; /* Optional attention grabber */
+}
+
+/* Simple shake animation for wrong answers */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+#new-game-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #27ae60; /* Sleek newspaper green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Separates the two buttons */
+    transition: background 0.2s;
+}
+
+#new-game-btn:hover {
+    background-color: #219653;
+}
