@@ -130,3 +130,11 @@ header {
 #new-game-btn:hover {
     background-color: #219653;
 }
+
+/* Real-time board rule violation highlights */
+.cell.duplicate-error {
+    background-color: #ffeef0 !important; /* Soft rose warning background */
+    color: #d93025 !important;            /* Crimson alert text color */
+    font-weight: bold;
+}
+
